@@ -97,7 +97,7 @@
         H_i_offset = (H_n1 - H_p1) / (2*(H_n1 + H_p1 - 2*Hist) + eps)
         H_p_i_onehot = F.one_hot(H_p_i,num_classes=bins)
         H_p_offset = torch.sum(H_i_offset*H_p_i_onehot,dim=-1)
-        H_p = (H_p_i + H_p_offset) * bin_size
+        H_p = (H_p_i + H_p_offset + 0.5) * bin_size
         H_p = H_p % 180 - 90
 
         return H_p
